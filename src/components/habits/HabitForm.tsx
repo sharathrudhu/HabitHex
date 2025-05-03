@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Habit, HabitCategory, HabitFrequency, AppView } from '@/types';
+import { Habit, HabitCategory, HabitFrequency, AppView } from '@/types/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -30,7 +30,7 @@ const habitSchema = z.object({
   category: z.enum(['health', 'fitness', 'productivity', 'mindfulness', 'learning', 'social', 'finance', 'custom']),
   frequency: z.enum(['daily', 'weekly', 'monthly', 'custom']),
   timeOfDay: z.string().optional(),
-  reminder: z.boolean().default(false),
+  reminder: z.boolean(),  // Make sure it's not optional or nullable
   reminderTime: z.string().optional(),
   tags: z.string().optional(),
 });
@@ -57,7 +57,7 @@ export function HabitForm({ editHabit, setCurrentView }: HabitFormProps) {
   };
   
   const form = useForm<FormValues>({
-    resolver: zodResolver(habitSchema),
+    resolver: zodResolver(habitSchema) as any,
     defaultValues,
   });
   
@@ -95,7 +95,7 @@ export function HabitForm({ editHabit, setCurrentView }: HabitFormProps) {
   };
   
   return (
-    <div className="max-w-lg mx-auto p-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
+    <div className="max-w-lg mx-auto pt-20 px-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
       <h2 className="text-2xl font-bold mb-6">
         {editHabit ? 'Edit Habit' : 'Create New Habit'}
       </h2>

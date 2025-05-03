@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import {
   ArrowLeft,
-  Calendar,
   Edit2,
   Trash2,
   Trophy,
   BarChart3,
   CalendarDays,
 } from 'lucide-react';
-import { format, addDays, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay } from 'date-fns';
-import { Habit, AppView, CompletionRecord } from '@/types';
+import { format, addDays } from 'date-fns';
+import { Habit, AppView } from '@/types/types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -33,8 +32,8 @@ import {
   TabsTrigger 
 } from '@/components/ui/tabs';
 import { useHabits } from '@/contexts/HabitContext';
-import { calculateStreak } from '@/utils/habitUtils';
-import { CellCalendar } from '@/components/ui/calendar';
+import { calculateStreak } from '@/lib/habitUtils';
+import { Calendar } from '@/components/ui/calendar';
 import { BarChart } from '@/components/ui/chart';
 
 interface HabitDetailProps {
@@ -186,7 +185,7 @@ export function HabitDetail({ habit, setCurrentView, setSelectedHabit }: HabitDe
         
         <TabsContent value="overview" className="space-y-4">
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="px-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-medium">Habit Details</h3>
@@ -231,7 +230,7 @@ export function HabitDetail({ habit, setCurrentView, setSelectedHabit }: HabitDe
           </Card>
           
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="px-6 pb-6">
               <h3 className="text-xl font-medium mb-4">30 Day Progress</h3>
               <div className="h-64">
                 <BarChart 
@@ -240,7 +239,11 @@ export function HabitDetail({ habit, setCurrentView, setSelectedHabit }: HabitDe
                   index="date"
                   colors={['hsl(var(--chart-1))']}
                   valueFormatter={(value) => value === 1 ? 'Completed' : 'Missed'}
-                  yAxisWidth={30}
+                  yAxisWidth={60}
+                  showYAxis={true}
+                  showXAxis={true}
+                  showCartesianGrid={true}
+                  yAxisDomain={[0, 1]}
                 />
               </div>
             </CardContent>
@@ -249,8 +252,8 @@ export function HabitDetail({ habit, setCurrentView, setSelectedHabit }: HabitDe
         
         <TabsContent value="calendar">
           <Card>
-            <CardContent className="pt-6">
-              <CellCalendar 
+            <CardContent className="px-6">
+              <Calendar 
                 mode="multiple"
                 selected={completedDates}
                 className="rounded-md border"
@@ -261,7 +264,7 @@ export function HabitDetail({ habit, setCurrentView, setSelectedHabit }: HabitDe
         
         <TabsContent value="history">
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="px-6">
               <h3 className="text-xl font-medium mb-4">Completion History</h3>
               <ScrollArea className="h-96">
                 {habit.completionRecords.length > 0 ? (

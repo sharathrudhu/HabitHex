@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Trophy, Calendar, Users, MoreHorizontal, Award } from 'lucide-react';
-import { Challenge, Habit } from '@/types';
+import { Challenge, Habit } from '@/types/types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -47,7 +47,7 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
     <Card className={`overflow-hidden transition-all duration-500 ${
       challenge.isCompleted ? 'bg-primary/10 border-primary/50' : 'hover:border-primary/30'
     } ${showCompletedAnimation ? 'animate-pulse' : ''}`}>
-      <CardContent className="p-6">
+      <CardContent className="px-6">
         <div className="flex justify-between items-start mb-4">
           <div className={`rounded-full p-2 ${
             challenge.isCompleted ? 'bg-green-500/20' : 'bg-primary/10'
@@ -60,7 +60,7 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
           </div>
           
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger>
               <Button variant="ghost" size="icon">
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
