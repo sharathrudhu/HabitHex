@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Trophy, Calendar, Users, MoreHorizontal, Award } from 'lucide-react';
-import { Challenge, Habit } from '@/types/types';
+import { Challenge } from '@/types/types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
