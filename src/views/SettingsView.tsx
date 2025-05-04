@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { AppView } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -24,11 +23,7 @@ import {
 import { useTheme } from '@/contexts/ThemeContext';
 import { useHabits } from '@/contexts/HabitContext';
 
-interface SettingsViewProps {
-  setCurrentView: (view: AppView) => void;
-}
-
-export function SettingsView({ setCurrentView }: SettingsViewProps) {
+export function SettingsView() {
   const { theme, setTheme } = useTheme();
   const { habits, challenges } = useHabits();
   const [notificationsEnabled, setNotificationsEnabled] = useState(() => {

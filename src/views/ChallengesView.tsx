@@ -1,5 +1,5 @@
 import { Plus } from 'lucide-react';
-import { AppView } from '@/types';
+import { AppView } from '@/types/types';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChallengeCard } from '@/components/challenges/ChallengeCard';

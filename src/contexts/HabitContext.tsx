@@ -2,7 +2,6 @@ import { createContext, useContext, ReactNode, useState, useEffect } from 'react
 import { Habit, Challenge, MoodType } from '../types/types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { generateId, completeHabit } from '../lib/habitUtils';
-import { format } from 'date-fns';
 
 interface HabitContextType {
   habits: Habit[];

@@ -65,7 +65,7 @@ function App() {
       case "add-challenge":
         return <ChallengeForm setCurrentView={setCurrentView} />;
       case "settings":
-        return <SettingsView setCurrentView={setCurrentView} />;
+        return <SettingsView />;
       default:
         return (
           <Dashboard

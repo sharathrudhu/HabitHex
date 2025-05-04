@@ -1,4 +1,4 @@
-import { Habit, CompletionRecord } from '../types';
+import { Habit, CompletionRecord } from '@/types/types';
 import { format, subDays, isToday, isSameDay, parseISO, differenceInDays } from 'date-fns';
 
 // Calculate current streak for a habit

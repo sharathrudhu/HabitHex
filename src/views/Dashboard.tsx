@@ -1,6 +1,6 @@
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
-import { Habit, AppView } from '@/types';
+import { Habit, AppView } from '@/types/types';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
